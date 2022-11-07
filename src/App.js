@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, Router, BrowserRouter } from "react-router-dom
 import Axios from 'axios';
 
 import { GithubContext } from 'contexts/GithubContext';
-import { BASE_API_URL } from 'configs/config'
+import { GITHUB_API_URL } from 'configs/config'
 
 // layouts
 
@@ -67,7 +67,7 @@ function App({navigation}) {
         photoUser: state.photoUser,
         getDataRepos: data => {
           dispatch({type: 'START_LOADING'});
-          Axios.get(`${BASE_API_URL}users/${data.username}/repos`).then(res => {
+          Axios.get(`${GITHUB_API_URL}users/${data.username}/repos`).then(res => {
             console.log(res.data[0].owner.avatar_url);
             dispatch({
               type: 'ADD_DATA_USER',
