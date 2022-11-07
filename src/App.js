@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useReducer, useState} from 'react'
-import { Route, Switch, Redirect, Router } from "react-router-dom";
+import { Route, Switch, Redirect, Router, BrowserRouter } from "react-router-dom";
 import Axios from 'axios';
 
 import { GithubContext } from 'contexts/GithubContext';
@@ -96,8 +96,8 @@ function App({navigation}) {
     <GithubContext.Provider value={githubContext}>
       <Router history={history}>
         <Switch>
-          <Route path="/home" component={WelcomePage} />
-          <Route path="/list-repos/:username" component={ListReposPage} />
+          <Route exact path="/home" component={WelcomePage} />
+          <Route exact path="/list-repos/:username" component={ListReposPage} />
           <Redirect from="*" to="/home" />
         </Switch>
       </Router>
